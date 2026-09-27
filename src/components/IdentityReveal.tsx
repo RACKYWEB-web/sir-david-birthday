@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
-import { Flame, ShieldCheck, Users, ChevronRight, Crown } from 'lucide-react';
+import { Flame, ChevronRight, Crown } from 'lucide-react';
 import { CELEBRANT_INFO } from '../data/experienceData';
+import CelebrantHeroCard from './CelebrantHeroCard';
 
 interface IdentityRevealProps {
   onContinue: () => void;
@@ -14,93 +15,76 @@ export default function IdentityReveal({ onContinue }: IdentityRevealProps) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.9 }}
-        className="w-full max-w-3xl mx-auto flex flex-col items-center justify-center"
+        className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center"
       >
-        {/* Crown Crest - Compact */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.7, y: 15 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="mx-auto mb-2 sm:mb-3 w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center bg-gradient-to-b from-amber-400/20 via-orange-500/10 to-transparent border border-amber-400/40 shadow-lg relative"
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.35em] text-amber-400/80"
         >
-          <Crown className="w-7 h-7 sm:w-8 sm:h-8 text-amber-300 drop-shadow-[0_0_12px_rgba(245,158,11,0.6)]" />
-          <div className="absolute inset-0 rounded-full animate-ping bg-amber-400/10 pointer-events-none" />
-        </motion.div>
+          IN HONOR OF OUR BELOVED PASTOR
+        </motion.p>
 
-        {/* 1. Name Reveal */}
-        <div className="space-y-1 mb-2 sm:mb-3">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.35em] text-amber-400/80"
-          >
-            IN HONOR OF
-          </motion.p>
+        {/* Celebrant Hero Portrait Card - Bold, Large & Unmistakable */}
+        <CelebrantHeroCard />
 
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.92, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-wide gold-glow leading-tight"
-          >
-            {CELEBRANT_INFO.name.toUpperCase()}
-          </motion.h1>
-        </div>
-
-        {/* 2. Identity Triplets */}
+        {/* Roles Breakdown */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="my-2 sm:my-3"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="my-1.5 sm:my-2 flex flex-col items-center gap-1.5 w-full max-w-xl mx-auto"
         >
-          <div className="inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 px-4 sm:px-6 py-2 rounded-xl glass-gold-panel border border-amber-500/30 text-xs sm:text-base font-cinzel text-amber-200 font-semibold tracking-wider">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
-              Pastor
-            </span>
-            <span className="text-amber-500">•</span>
-            <span className="flex items-center gap-1.5">
-              <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
-              Mentor
-            </span>
-            <span className="text-amber-500">•</span>
-            <span className="flex items-center gap-1.5">
-              <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
-              Youth Convener
-            </span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 w-full">
+            {/* Ministry 1: Quiver Nation */}
+            <div className="w-full sm:w-auto flex-1 flex items-center gap-2.5 px-3.5 py-2 rounded-xl glass-gold-panel border border-amber-400/40 shadow-sm text-left">
+              <div className="w-7 h-7 rounded-lg bg-amber-500/20 border border-amber-300/40 flex items-center justify-center text-amber-300 shrink-0">
+                <Crown className="w-4 h-4 text-amber-300" />
+              </div>
+              <div>
+                <div className="text-[9px] uppercase tracking-widest text-amber-400/90 font-semibold leading-none mb-0.5">
+                  FOUNDER
+                </div>
+                <div className="font-cinzel text-xs sm:text-sm font-bold text-white tracking-wider leading-tight">
+                  QUIVER NATION
+                </div>
+              </div>
+            </div>
+
+            {/* Ministry 2: Campus Fire Fellowship */}
+            <div className="w-full sm:w-auto flex-1 flex items-center gap-2.5 px-3.5 py-2 rounded-xl glass-panel border border-orange-500/30 shadow-sm text-left">
+              <div className="w-7 h-7 rounded-lg bg-orange-500/20 border border-orange-400/30 flex items-center justify-center text-orange-400 shrink-0">
+                <Flame className="w-4 h-4 text-orange-400" />
+              </div>
+              <div>
+                <div className="text-[9px] uppercase tracking-widest text-orange-300/90 font-semibold leading-none mb-0.5">
+                  YOUTH CONVENER & PASTOR
+                </div>
+                <div className="font-cinzel text-xs sm:text-sm font-bold text-white tracking-wider leading-tight">
+                  CAMPUS FIRE FELLOWSHIP
+                </div>
+              </div>
+            </div>
           </div>
-        </motion.div>
 
-        {/* 3. Organization Reveal */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="my-2 sm:my-3 flex flex-col items-center gap-1"
-        >
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-slate-400">
-            MINISTRY & COMMUNION
+          <p className="text-[10px] text-slate-400 italic text-center">
+            Celebrated with deep devotion by the members and youths of Campus Fire Fellowship.
           </p>
-          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-orange-500/30 text-amber-300/90 font-cinzel tracking-widest text-xs sm:text-sm font-bold">
-            <Flame className="w-3.5 h-3.5 text-orange-400 animate-pulse" />
-            <span>{CELEBRANT_INFO.organization}</span>
-            <Flame className="w-3.5 h-3.5 text-orange-400 animate-pulse" />
-          </div>
         </motion.div>
 
         {/* Progression trigger */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.3 }}
-          className="pt-2 sm:pt-3"
+          transition={{ duration: 0.7, delay: 0.8 }}
+          className="pt-1.5 sm:pt-2"
         >
           <button
             id="continue-to-hero-btn"
             onClick={onContinue}
-            className="group relative inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black font-cinzel font-bold text-xs sm:text-sm tracking-wider hover:from-amber-400 hover:to-amber-300 transition-all duration-300 shadow-lg shadow-amber-500/25 hover:scale-105 active:scale-95 cursor-pointer"
+            className="group relative inline-flex items-center gap-2 px-6 sm:px-7 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black font-cinzel font-bold text-xs sm:text-sm tracking-wider hover:from-amber-400 hover:to-amber-300 transition-all duration-300 shadow-lg shadow-amber-500/25 hover:scale-105 active:scale-95 cursor-pointer"
           >
             <span>REVEAL THE HERO'S HEART</span>
             <ChevronRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />

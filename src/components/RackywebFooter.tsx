@@ -179,6 +179,10 @@ export default function RackywebFooter() {
             <Heart className="w-3 h-3 text-rose-400 fill-rose-400" />
           </motion.div>
         )}
+        {/* Ministry Partnership note at the very end */}
+        <div className="mt-1.5 pt-1.5 border-t border-white/5 text-[9px] sm:text-[10px] text-slate-400 tracking-wider">
+          Honoring Pastor Sibigam David (<span className="text-amber-300 font-semibold">Founder, Quiver Nation</span>) • Presented by <span className="text-orange-300 font-semibold">Campus Fire Fellowship</span>
+        </div>
       </div>
     </motion.div>
   );

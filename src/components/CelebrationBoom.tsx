@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { Sparkles, ChevronRight, Cake, PartyPopper, Flame } from 'lucide-react';
+import CelebrantPortrait from './CelebrantPortrait';
 
 interface CelebrationBoomProps {
   onContinueToTributes: () => void;
@@ -133,11 +134,21 @@ export default function CelebrationBoom({ onContinueToTributes }: CelebrationBoo
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.15 }}
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-gold-panel border border-amber-400/50 text-amber-300 font-cinzel text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-1.5 shadow-md"
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-gold-panel border border-amber-400/50 text-amber-300 font-cinzel text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-2 shadow-md"
         >
           <PartyPopper className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
           <span>SEPTEMBER 27 • THE CELEBRATION IS UNLEASHED</span>
           <Cake className="w-3.5 h-3.5 text-amber-400" />
+        </motion.div>
+
+        {/* Celebrant Portrait */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="mb-2"
+        >
+          <CelebrantPortrait size="md" showEditPrompt={false} />
         </motion.div>
 
         {/* Dramatic Birthday Typography */}
@@ -166,12 +177,12 @@ export default function CelebrationBoom({ onContinueToTributes }: CelebrationBoo
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65 }}
-          className="my-1 sm:my-2"
+          className="my-1"
         >
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-amber-300/80 font-bold mb-0.5">
+          <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-amber-300/80 font-bold mb-0.5">
             HONORED WITH ALL OUR HEARTS
           </p>
-          <div className="inline-block text-xs sm:text-base font-cinzel font-bold text-slate-100 tracking-widest border-b border-amber-400/30 pb-0.5">
+          <div className="inline-block text-xs sm:text-sm font-cinzel font-bold text-slate-100 tracking-widest border-b border-amber-400/30 pb-0.5">
             FROM CAMPUS FIRE FELLOWSHIP
           </div>
         </motion.div>
@@ -181,9 +192,9 @@ export default function CelebrationBoom({ onContinueToTributes }: CelebrationBoo
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.85 }}
-          className="my-1 sm:my-2"
+          className="my-1"
         >
-          <h3 className="font-cinzel text-base sm:text-xl font-extrabold text-amber-400 gold-glow tracking-widest">
+          <h3 className="font-cinzel text-sm sm:text-lg font-extrabold text-amber-400 gold-glow tracking-widest">
             CONGRATULATIONS
           </h3>
           <p className="text-[11px] sm:text-xs text-slate-300 max-w-md mx-auto mt-0.5 font-light leading-relaxed px-2">
@@ -196,12 +207,12 @@ export default function CelebrationBoom({ onContinueToTributes }: CelebrationBoo
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
-          className="pt-2 sm:pt-3 flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+          className="pt-1.5 sm:pt-2 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
         >
           <button
             id="more-fun-boom-btn"
             onClick={triggerFunBoom}
-            className="group relative inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-amber-500 text-white font-cinzel font-black text-xs sm:text-sm tracking-wider hover:brightness-110 transition-all duration-300 shadow-lg shadow-pink-500/25 hover:scale-105 active:scale-95 cursor-pointer"
+            className="group relative inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-amber-500 text-white font-cinzel font-black text-xs tracking-wider hover:brightness-110 transition-all duration-300 shadow-lg shadow-pink-500/25 hover:scale-105 active:scale-95 cursor-pointer"
           >
             <PartyPopper className="w-3.5 h-3.5 text-yellow-200 animate-bounce" />
             <span>MORE FUN BOOM! ({boomCount})</span>
@@ -211,7 +222,7 @@ export default function CelebrationBoom({ onContinueToTributes }: CelebrationBoo
           <button
             id="proceed-to-tributes-btn"
             onClick={onContinueToTributes}
-            className="group relative inline-flex items-center gap-2 px-5 sm:px-7 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black font-cinzel font-black text-xs sm:text-sm tracking-wider hover:from-amber-400 hover:to-amber-300 transition-all duration-300 shadow-xl shadow-amber-500/30 hover:scale-105 active:scale-95 cursor-pointer"
+            className="group relative inline-flex items-center gap-2 px-5 sm:px-6 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black font-cinzel font-black text-xs tracking-wider hover:from-amber-400 hover:to-amber-300 transition-all duration-300 shadow-xl shadow-amber-500/30 hover:scale-105 active:scale-95 cursor-pointer"
           >
             <Sparkles className="w-4 h-4 text-black" />
             <span>READ CAMPUS FIRE TRIBUTES</span>

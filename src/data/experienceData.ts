@@ -6,8 +6,13 @@ export const CELEBRANT_INFO = {
   passcode: 'david', // case-insensitive
   identity: 'Pastor • Mentor • Youth Convener',
   organization: 'Campus Fire Fellowship',
+  primaryMinistry: 'Quiver Nation',
+  primaryRole: 'Founder',
+  campusMinistry: 'Campus Fire Fellowship',
+  campusRole: 'Youth Convener & Pastor',
   birthday: '27th September',
   dateFormatted: 'TODAY • SEPTEMBER 27',
+  photoUrl: '/celebrant.jpg',
 };
 
 export const IMPACT_STATEMENTS = [
@@ -78,43 +83,6 @@ Enjoy your day Sir.
 
 Your new age is blessed 🎉🎉🥳🥳`,
   },
-  {
-    id: 'placeholder-member-1',
-    name: 'Campus Fire Member',
-    role: 'Youth Fellowship',
-    highlight: 'A blessing, a mentor and a voice',
-    message: `Happy birthday Sir David.
-
-Thank you for being a blessing, a mentor and a voice to many of us. Your words, prayers and encouragement have made a difference.
-
-We celebrate you today and pray that this new chapter brings you greater grace, wisdom and impact.
-
-Happy birthday, Sir.`,
-  },
-  {
-    id: 'placeholder-member-2',
-    name: 'Another Campus Fire Member',
-    role: 'Campus Fire Executive',
-    highlight: 'Believing in young people',
-    message: `Happy birthday Sir David.
-
-Your life has inspired many of us in ways that words cannot completely explain.
-
-Thank you for believing in young people and for constantly pushing us to become better.
-
-May God continue to strengthen you and increase your impact.`,
-  },
-  {
-    id: 'campus-fire-alumni',
-    name: 'Fellowship Outreach Team',
-    role: 'Campus Fire Family',
-    highlight: 'May your fire burn ever brighter',
-    message: `To our Pastor and Youth Convener:
-
-Thank you for carrying the burden of revival on campuses. You never get tired of pouring into people, praying late into the night, and ensuring that no one is left behind.
-
-We honor you today, Sir! Keep shining and blazing the trail!`,
-  },
 ];
 
 export const COLLECTIVE_MESSAGE = {
@@ -144,6 +112,7 @@ export const FINAL_MESSAGE_TEXT = {
   sub: 'MAY YOUR FIRE NEVER GO OUT.',
   blessing:
     'The Lord bless you and keep you; the Lord make His face shine upon you and be gracious to you; the Lord turn His face toward you and give you peace. Your greatest chapters are yet to be written.',
+  fellowshipSignature: 'Campus Fire Fellowship',
 };
 
 export const SECRET_SURPRISE_DATA = {

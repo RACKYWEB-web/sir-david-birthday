@@ -43,7 +43,7 @@ export default function CollectiveMessageSection({ onContinueToFinal }: Collecti
           initial={{ opacity: 0, scale: 0.92, filter: 'blur(8px)' }}
           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
           transition={{ duration: 1.2, delay: 0.8 }}
-          className="font-cinzel text-xl sm:text-3xl md:text-4xl font-black text-white tracking-wide gold-glow mb-3 sm:mb-4 leading-tight"
+          className="font-cinzel text-lg sm:text-2xl md:text-3xl font-black text-white tracking-wide gold-glow mb-2 sm:mb-2.5 leading-tight"
         >
           {COLLECTIVE_MESSAGE.header2}
         </motion.h1>
@@ -53,9 +53,9 @@ export default function CollectiveMessageSection({ onContinueToFinal }: Collecti
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.1 }}
-          className="p-4 sm:p-7 rounded-2xl sm:rounded-3xl glass-gold-panel border border-amber-500/30 shadow-2xl relative overflow-hidden text-left sm:text-center"
+          className="p-3 sm:p-5 rounded-2xl glass-gold-panel border border-amber-500/30 shadow-2xl relative overflow-hidden text-left sm:text-center"
         >
-          <div className="space-y-2 font-playfair text-xs sm:text-sm md:text-base text-slate-100 leading-relaxed font-light">
+          <div className="space-y-1 sm:space-y-1.5 font-playfair text-[11px] sm:text-xs md:text-sm text-slate-100 leading-snug sm:leading-relaxed font-light">
             {COLLECTIVE_MESSAGE.lines.map((line, index) => {
               const isHighlight =
                 line.includes('Happy Birthday') ||
@@ -67,10 +67,10 @@ export default function CollectiveMessageSection({ onContinueToFinal }: Collecti
                   key={index}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 1.2 + index * 0.08 }}
                   className={`${
                     isHighlight
-                      ? 'font-cinzel font-bold text-amber-300 gold-glow pt-1 text-sm sm:text-lg'
+                      ? 'font-cinzel font-bold text-amber-300 gold-glow pt-0.5 text-xs sm:text-base'
                       : 'text-slate-200/95'
                   }`}
                 >
@@ -80,10 +80,10 @@ export default function CollectiveMessageSection({ onContinueToFinal }: Collecti
             })}
           </div>
 
-          <div className="mt-4 pt-3 border-t border-amber-500/20 flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest text-amber-300/80 font-cinzel">
-            <Heart className="w-3.5 h-3.5 text-amber-400 fill-amber-400/40" />
+          <div className="mt-2.5 pt-2 border-t border-amber-500/20 flex items-center justify-center gap-1.5 text-[9px] sm:text-[10px] uppercase tracking-widest text-amber-300/80 font-cinzel">
+            <Heart className="w-3 h-3 text-amber-400 fill-amber-400/40" />
             <span>UNITED IN FAITH & GRATITUDE</span>
-            <Heart className="w-3.5 h-3.5 text-amber-400 fill-amber-400/40" />
+            <Heart className="w-3 h-3 text-amber-400 fill-amber-400/40" />
           </div>
         </motion.div>
 
@@ -91,13 +91,13 @@ export default function CollectiveMessageSection({ onContinueToFinal }: Collecti
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.5 }}
-          className="mt-4 sm:mt-5"
+          transition={{ duration: 0.8, delay: 2.2 }}
+          className="mt-2.5 sm:mt-3"
         >
           <button
             id="proceed-to-final-message-btn"
             onClick={onContinueToFinal}
-            className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black font-cinzel font-black text-xs sm:text-sm tracking-wider hover:from-amber-400 hover:to-amber-300 transition-all duration-300 shadow-xl shadow-amber-500/30 hover:scale-105 active:scale-95 cursor-pointer text-center"
+            className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black font-cinzel font-black text-xs sm:text-sm tracking-wider hover:from-amber-400 hover:to-amber-300 transition-all duration-300 shadow-xl shadow-amber-500/30 hover:scale-105 active:scale-95 cursor-pointer text-center"
           >
             <Sparkles className="w-4 h-4 text-black shrink-0" />
             <span>THE SACRED BLESSING</span>

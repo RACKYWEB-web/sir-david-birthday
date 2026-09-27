@@ -15,11 +15,15 @@ import TributesSection from './components/TributesSection';
 import CollectiveMessageSection from './components/CollectiveMessageSection';
 import FinalMessageSection from './components/FinalMessageSection';
 import ExperienceNav from './components/ExperienceNav';
+import { PhotoProvider, useCelebrantPhoto } from './context/PhotoContext';
+import PhotoModal from './components/PhotoModal';
+import { Camera, Sparkles } from 'lucide-react';
 
-export default function App() {
+function ExperienceLayout() {
   const [currentStage, setCurrentStage] = useState<StageId>('entry');
   const [unlockedStages, setUnlockedStages] = useState<StageId[]>(['entry']);
   const [audioTrigger, setAudioTrigger] = useState(false);
+  const { openModal, photoUrl } = useCelebrantPhoto();
 
   const transitionToStage = (nextStage: StageId) => {
     if (!unlockedStages.includes(nextStage)) {
@@ -52,8 +56,30 @@ export default function App() {
       {/* Floating Audio Soundtrack Controller */}
       <AudioController autoStartTrigger={audioTrigger} />
 
-      {/* Main Experience Container */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-start w-full min-h-full px-2 sm:px-4 py-4 sm:py-6 pb-24 sm:pb-28">
+      {/* Floating Photo Manager Trigger (Visible once unlocked) */}
+      {currentStage !== 'entry' && (
+        <div className="fixed top-5 left-4 sm:left-6 z-40">
+          <button
+            onClick={openModal}
+            className="group flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full glass-panel border border-amber-500/25 hover:border-amber-400/50 text-slate-300 hover:text-amber-200 transition-all duration-300 shadow-lg shadow-black/40 hover:scale-105 active:scale-95 cursor-pointer text-xs"
+            title="Set or change Celebrant Photo"
+          >
+            <Camera className="w-3.5 h-3.5 text-amber-400 group-hover:rotate-12 transition-transform" />
+            <span className="font-cinzel text-[10px] sm:text-[11px] font-semibold tracking-wider text-amber-200/90">
+              {photoUrl ? 'Photo Active' : 'Add Photo'}
+            </span>
+            {!photoUrl && (
+              <span className="flex h-1.5 w-1.5 rounded-full bg-amber-400 animate-ping" />
+            )}
+          </button>
+        </div>
+      )}
+
+      {/* Photo Management Modal */}
+      <PhotoModal />
+
+      {/* Main Experience Container - Screen fitted and vertically centered */}
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center w-full min-h-[100dvh] px-2 sm:px-4 py-2 sm:py-3 pb-12 sm:pb-14">
         <AnimatePresence mode="wait">
           {currentStage === 'entry' && (
             <motion.div
@@ -215,5 +241,13 @@ export default function App() {
         unlockedStages={unlockedStages}
       />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <PhotoProvider>
+      <ExperienceLayout />
+    </PhotoProvider>
   );
 }

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Flame, Sparkles, HelpCircle, ArrowRight, RotateCcw, X } from 'lucide-react';
+import { Sparkles, HelpCircle, ArrowRight, RotateCcw, X, Crown, Flame } from 'lucide-react';
 import { FINAL_MESSAGE_TEXT, SECRET_SURPRISE_DATA } from '../data/experienceData';
 import RackywebFooter from './RackywebFooter';
+import CelebrantPortrait from './CelebrantPortrait';
 
 interface FinalMessageSectionProps {
   onRestart: () => void;
@@ -12,7 +13,7 @@ export default function FinalMessageSection({ onRestart }: FinalMessageSectionPr
   const [showSecretModal, setShowSecretModal] = useState(false);
 
   return (
-    <div className="relative w-full flex flex-col items-center justify-center p-2 sm:p-4 text-center my-auto">
+    <div className="relative w-full flex flex-col items-center justify-center p-1 sm:p-3 text-center my-auto">
       {/* Subtle background sacred glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(217,119,6,0.16),transparent_70%)] pointer-events-none" />
 
@@ -20,25 +21,24 @@ export default function FinalMessageSection({ onRestart }: FinalMessageSectionPr
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="w-full max-w-2xl mx-auto relative z-10 px-1 sm:px-2 flex flex-col items-center justify-center flex-1 my-auto"
+        className="w-full max-w-2xl mx-auto relative z-10 px-1 sm:px-2 flex flex-col items-center justify-center"
       >
-        {/* Sacred Flame Icon - Compact & Centered */}
+        {/* Celebrant Seal Portrait */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="mx-auto mb-1 sm:mb-1.5 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-amber-500/20 via-orange-500/10 to-transparent border border-amber-400/40 flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.25)] relative"
+          className="mx-auto mb-1 sm:mb-2"
         >
-          <Flame className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,158,11,0.8)]" />
-          <div className="absolute inset-0 rounded-full animate-ping bg-amber-400/15 pointer-events-none" />
+          <CelebrantPortrait size="md" showEditPrompt={false} />
         </motion.div>
 
-        {/* 1. Main Birthday Climax - Screen-fitted typography */}
+        {/* 1. Main Birthday Climax */}
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.25 }}
-          className="font-cinzel text-lg xs:text-xl sm:text-3xl md:text-4xl font-black text-white tracking-wider mb-0.5 sm:mb-1 gold-glow leading-tight break-words"
+          className="font-cinzel text-lg xs:text-xl sm:text-3xl md:text-4xl font-black text-white tracking-wider mb-0.5 gold-glow leading-tight break-words"
         >
           {FINAL_MESSAGE_TEXT.main}
         </motion.h1>
@@ -48,49 +48,78 @@ export default function FinalMessageSection({ onRestart }: FinalMessageSectionPr
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-cinzel text-xs xs:text-sm sm:text-lg md:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-orange-400 tracking-wide sm:tracking-widest my-0.5 sm:my-1 leading-tight break-words"
+          className="font-cinzel text-xs xs:text-sm sm:text-base md:text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-orange-400 tracking-wide sm:tracking-widest my-0.5 leading-tight break-words"
         >
           {FINAL_MESSAGE_TEXT.sub}
         </motion.h2>
 
-        {/* Priestly blessing */}
+        {/* Priestly blessing with Campus Fire Fellowship under the words */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.6 }}
+          transition={{ duration: 0.9, delay: 0.55 }}
           className="my-1 sm:my-1.5 max-w-lg mx-auto px-2"
         >
-          <p className="font-playfair text-[11px] sm:text-xs md:text-sm text-slate-300 italic leading-relaxed font-light line-clamp-2 sm:line-clamp-3">
+          <p className="font-playfair text-[11px] sm:text-xs md:text-sm text-slate-300 italic leading-relaxed font-light">
             “{FINAL_MESSAGE_TEXT.blessing}”
+          </p>
+          <p className="font-cinzel text-[11px] sm:text-xs font-bold text-amber-300 tracking-widest uppercase mt-1">
+            — {FINAL_MESSAGE_TEXT.fellowshipSignature}
           </p>
         </motion.div>
 
-        {/* Secret Surprise Teaser & Action Buttons - Compact & In View */}
+        {/* Action Buttons: Secret Surprise & Replay */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
           className="pt-1 flex flex-wrap items-center justify-center gap-2 w-full"
         >
           <button
             id="open-secret-surprise-btn"
             onClick={() => setShowSecretModal(true)}
-            className="group relative inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-amber-500/25 via-amber-400/35 to-amber-500/25 border border-amber-400/60 text-amber-200 font-cinzel font-bold text-xs tracking-wider hover:bg-amber-400/35 hover:border-amber-300 hover:text-white transition-all duration-300 shadow-md shadow-amber-500/15 hover:scale-105 active:scale-95 cursor-pointer text-center"
+            className="group relative inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/25 via-amber-400/35 to-amber-500/25 border border-amber-400/60 text-amber-200 font-cinzel font-bold text-[11px] sm:text-xs tracking-wider hover:bg-amber-400/35 hover:border-amber-300 hover:text-white transition-all duration-300 shadow-md shadow-amber-500/15 hover:scale-105 active:scale-95 cursor-pointer text-center"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-spin shrink-0" style={{ animationDuration: '6s' }} />
+            <Sparkles className="w-3 h-3 text-amber-300 animate-spin shrink-0" style={{ animationDuration: '6s' }} />
             <span>LAST SECRET SURPRISE</span>
-            <ArrowRight className="w-3.5 h-3.5 text-amber-300 group-hover:translate-x-1 transition-transform shrink-0" />
+            <ArrowRight className="w-3 h-3 text-amber-300 group-hover:translate-x-1 transition-transform shrink-0" />
           </button>
 
           <button
             id="replay-experience-btn"
             onClick={onRestart}
-            className="inline-flex items-center justify-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full glass-panel border border-white/10 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-slate-200 hover:border-white/25 transition-all cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full glass-panel border border-white/10 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-slate-200 hover:border-white/25 transition-all cursor-pointer"
             title="Replay this celebration experience"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Replay</span>
           </button>
+        </motion.div>
+
+        {/* End of Website: Presented by Campus Fire Fellowship honoring Founder of Quiver Nation */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.85 }}
+          className="mt-2 mb-1 flex flex-col items-center justify-center gap-1 text-center"
+        >
+          <div className="flex flex-wrap items-center justify-center gap-1.5">
+            <span className="text-[10px] uppercase tracking-wider text-slate-400 font-medium">
+              Presented with love by:
+            </span>
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full glass-panel border border-orange-500/40 text-orange-300 text-[10px] sm:text-[11px] font-cinzel font-bold tracking-wider">
+              <Flame className="w-3 h-3 text-orange-400" />
+              <span>Campus Fire Fellowship</span>
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-1 text-[10px] text-slate-400">
+            <span>In honor of our Pastor,</span>
+            <span className="inline-flex items-center gap-1 text-amber-300 font-semibold">
+              <Crown className="w-2.5 h-2.5 text-amber-400" />
+              Founder of Quiver Nation
+            </span>
+          </div>
         </motion.div>
 
         {/* Special Rackyweb Technologies Signature & Fun Section */}

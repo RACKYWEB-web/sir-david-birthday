@@ -262,7 +262,7 @@ export default function SecretEntry({ onUnlock }: SecretEntryProps) {
             animate={{ opacity: 1 }}
             className="text-[10px] sm:text-xs font-semibold uppercase text-amber-300/80 mb-1 tracking-[0.25em]"
           >
-            CONFIDENTIAL ARCHIVE • CAMPUS FIRE
+            CONFIDENTIAL ARCHIVE • CAMPUS FIRE FELLOWSHIP
           </motion.p>
 
           <motion.h1
